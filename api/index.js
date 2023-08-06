@@ -1,5 +1,5 @@
-const dotenv = require('dotenv'); // Removed .config()
-dotenv.config(); // Load environment variables from .env file
+const dotenv = require('dotenv'); 
+dotenv.config(); 
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require('bcrypt');
