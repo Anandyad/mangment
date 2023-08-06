@@ -6,6 +6,8 @@ const bcrypt = require('bcrypt');
 const User = require("./model/user");
 const app = express();
 var isEmpty = require('is-empty');
+const  build=require('path');
+const path = require('path');
 const bcryptSalt = bcrypt.genSaltSync(10);
 app.use(express.json());
 app.use(cors({
@@ -14,6 +16,10 @@ app.use(cors({
 }));
 require("./connection");
 
+app.use(express.static(path.join(__dirname,'./dist/assets')))
+app.get('*',function(req,res){
+    res.sendFile(path.join(__dirname,'./dist/assets/index.html'))
+})
 app.get("/test", (req, res) => {
     res.send("test ok");
 });
