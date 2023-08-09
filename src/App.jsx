@@ -5,10 +5,15 @@ import Login from './Pages/Login';
 import Layout from './Layout';
 import Register from './Pages/Register';
 import axios from 'axios';
+import React from 'react';
+
 axios.defaults.baseURL='http://localhost:4000'
 const App = () => {
+  const userContext=React.createContext();
+  userContext.Provider
   return (
     <>
+    <userContext.Provider>
         <Routes>
         <Route  path='/'  element={<Layout/>}>
           
@@ -18,7 +23,7 @@ const App = () => {
           
             </Route>
           </Routes>
-    
+          </userContext.Provider>
     </>
   );
 };

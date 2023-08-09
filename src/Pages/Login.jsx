@@ -1,11 +1,12 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import axios, { Axios } from "axios";
 import {ToastContainer, toast } from "react-toastify";
 const Login = () => {
 
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const[redirect,Setredirect]=useState(false);
     function LoginUser(ev) {
         debugger
         ev.preventDefault();
@@ -14,14 +15,19 @@ const Login = () => {
             email,
             password
            
-        });
+        },{withCredentials:true});
+Setredirect(true);
         toast.success('Login Succesfull')
     }
         catch(err){
             toast.error("Login Failed")
         }
     }
+     if(redirect){
+            return <Navigate to={'/'}></Navigate>
+    }
     return (
+      
         <>
             <div className="flex  items-center   mt-4  justify-around ">
 
